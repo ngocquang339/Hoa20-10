@@ -2,15 +2,30 @@ import React,{useEffect,useRef,useState} from 'react';
 import{createRoot}from'react-dom/client';
 import './style.css';
 
+const memories=[
+{file:'Hoa1.png',title:'Luôn rạng rỡ',wish:'Chúc Hoa luôn xinh tươi, tự tin và cười thật nhiều mỗi ngày.'},
+{file:'Hoa2.jpg',title:'Đi đến nơi mình thích',wish:'Chúc mì có thêm nhiều chuyến đi vui và những kỷ niệm thật đẹp.'},
+{file:'Hoa3.png',title:'Bình yên mỗi ngày',wish:'Chúc Hoa luôn khỏe mạnh, tinh thần thoải mái và ngày nào cũng có chuyện vui.'},
+{file:'Hoa4.png',title:'Mọi điều như ý',wish:'Chúc những ước mơ của mì dần thành hiện thực. 20/10 thật vui nhé!'}
+];
+
+function PhotoGallery(){return <div className="photo-gallery" role="region" aria-label="Bốn bức ảnh và lời chúc dành cho Hoa" tabIndex={0}>
+{memories.map((photo,i)=><figure className="photo-card" key={photo.file} style={{'--reveal':(1.8+i*.85)+'s','--twinkle':i*.45+'s'}}>
+<div className="photo-frame"><img src={`${import.meta.env.BASE_URL}photos/${photo.file}`} alt={`Khoảnh khắc ${i+1} của Hoa`} width="600" height="800"/><span className="photo-spark spark-one" aria-hidden="true">✦</span><span className="photo-spark spark-two" aria-hidden="true">✧</span></div>
+<figcaption><h2>{photo.title}</h2><p>{photo.wish}</p></figcaption>
+</figure>)}
+</div>}
+
 const scenes=[
-{theme:'hello',duration:9000,tag:'MỘT CHIẾC THIỆP NHỎ GỬI THƯ',title:<>Thư ơi, <em>20/10 nè!</em></>,note:'Chúc cậu một ngày thật vui, đầy năng lượng và nhiều điều tốt lành.',aside:'Mong hôm nay sẽ có thật nhiều điều khiến Thư mỉm cười.'},
-{theme:'garden',duration:10000,tag:'CHÚC MỪNG NGÀY PHỤ NỮ VIỆT NAM',title:<>Chúc cậu một ngày <em>thật vui.</em></>,note:'Có món ngon để ăn, có thời gian nghỉ và có thật nhiều tiếng cười.',aside:'Hôm nay nhớ tự thưởng cho mình một món yêu thích nha.'},
-{theme:'stars',duration:10000,tag:'THÊM MỘT VÀI LỜI CHÚC NỮA NÈ',title:<>Chúc những dự định <em>đều thuận lợi.</em></>,note:'Mong những kế hoạch của Thư, từ học tập đến công việc, đều có những bước tiến mới.',aside:'Cứ từ từ mà làm, từng chút một cũng là tiến bộ rồi!'},
-{theme:'heart',duration:10000,tag:'SỨC KHỎE VẪN LÀ QUAN TRỌNG NHẤT',title:<>Chúc cậu luôn <em>khỏe mạnh.</em></>,note:'Ăn uống đầy đủ, ngủ ngon và bớt những hôm thức khuya nhé.',aside:'Bận đến mấy cũng nhớ dành thời gian nghỉ ngơi.'},
-{theme:'bloom',duration:10000,tag:'TỰ TIN LÀ CHÍNH MÌNH',title:<>Luôn xinh tươi, <em>luôn tự tin.</em></>,note:'Mặc bộ đồ mình thích, làm điều mình giỏi, thử điều mình muốn.',aside:'Chúc Thư ngày càng hài lòng với phiên bản của chính mình.'},
-{theme:'smile',duration:11000,tag:'BỚT ÁP LỰC, THÊM NIỀM VUI',title:<>Cười nhiều hơn, <em>lo ít lại.</em></>,note:'Chúc cậu gặp nhiều chuyện vui và bớt những chuyện đau đầu.',aside:'Mong mỗi ngày của Thư đều có một niềm vui nho nhỏ.'},
-{theme:'letter',duration:18000,tag:'THÊM NHỮNG ĐIỀU TỐT LÀNH',title:<>Chúc cậu luôn <em>bình an, may mắn.</em></>,note:'Mong Thư có nhiều cơ hội mới, đủ tự tin để thử những điều mình thích và đủ kiên trì để theo đuổi những mục tiêu của riêng mình.',aside:'Chúc cậu tận hưởng những ngày vui và nhẹ nhàng vượt qua những ngày khó.'},
-{theme:'finale',duration:14000,tag:'GỬI THƯ MỘT CHÚT NIỀM VUI',title:<>Chúc mừng <em>ngày 20/10!</em></>,note:'Chúc Thư vui vẻ, khỏe mạnh, may mắn và làm được những điều mình muốn.',aside:'Nhận lời chúc xong thì nhớ có một ngày thật vui nha, cậu! ✨'}
+{theme:'hello',duration:9000,tag:'MỘT CHIẾC THIỆP NHỎ GỬI HOA',title:<>Hoa ơi, <em>20/10 nè!</em></>,note:'Chúc mì một ngày thật vui, đầy năng lượng và nhiều điều tốt lành.',aside:'Chúc Hoa hôm nay nhận nhiều quà, nhiều lời chúc và thật nhiều niềm vui.'},
+{theme:'garden',duration:10000,tag:'CHÚC MỪNG NGÀY PHỤ NỮ VIỆT NAM',title:<>Chúc mì một ngày <em>thật vui.</em></>,note:'Có món ngon để ăn, có thời gian nghỉ và có thật nhiều tiếng cười.',aside:'Hoa nhớ tự thưởng một món ngon yêu thích hôm nay nha.'},
+{theme:'stars',duration:10000,tag:'THÊM MỘT VÀI LỜI CHÚC NỮA NÈ',title:<>Chúc những dự định <em>đều thuận lợi.</em></>,note:'Mong những kế hoạch của mì, từ học tập đến công việc, đều có những bước tiến mới.',aside:'Cứ từ từ mà làm, từng chút một cũng là tiến bộ rồi!'},
+{theme:'heart',duration:10000,tag:'SỨC KHỎE VẪN LÀ QUAN TRỌNG NHẤT',title:<>Chúc Hoa luôn <em>khỏe mạnh.</em></>,note:'Ăn uống đầy đủ, ngủ ngon và bớt những hôm thức khuya nhé.',aside:'Bận đến mấy cũng nhớ dành thời gian nghỉ ngơi.'},
+{theme:'memories',duration:22000,tag:'BỐN KHOẢNH KHẮC, BỐN LỜI CHÚC',title:<><em>Chúc Thanh Hoa ngày 20/10 thật vui vẻ nhé</em></>,note:'Hôm nay cứ ăn ngon, đi chơi và tận hưởng ngày của mì nhé.',aside:'Chúc Hoa có thêm nhiều chuyến đi vui và ảnh đẹp mang về! ✨'},
+{theme:'bloom',duration:10000,tag:'TỰ TIN LÀ CHÍNH MÌNH',title:<>Luôn xinh tươi, <em>luôn tự tin.</em></>,note:'Mặc bộ đồ mình thích, làm điều mình giỏi, thử điều mình muốn.',aside:'Chúc mì ngày càng hài lòng với phiên bản của chính mình.'},
+{theme:'smile',duration:11000,tag:'BỚT ÁP LỰC, THÊM NIỀM VUI',title:<>Cười nhiều hơn, <em>lo ít lại.</em></>,note:'Chúc mì gặp nhiều chuyện vui và bớt những chuyện đau đầu.',aside:'Mong mỗi ngày của Hoa đều có một niềm vui nho nhỏ.'},
+{theme:'letter',duration:18000,tag:'THÊM NHỮNG ĐIỀU TỐT LÀNH',title:<><em>Chúc Hoa luôn bình an, may mắn.</em></>,note:'Mong mì có nhiều cơ hội mới, đủ tự tin để thử những điều mình thích và đủ kiên trì để theo đuổi những mục tiêu của riêng mình.',aside:'Chúc Hoa tận hưởng những ngày vui và nhẹ nhàng vượt qua những ngày khó.'},
+{theme:'finale',duration:14000,tag:'GỬI HOA MỘT CHÚT NIỀM VUI',title:<><em>Chúc mừng ngày 20/10!</em></>,note:'Chúc Hoa vui vẻ, khỏe mạnh, may mắn và làm được những điều mình muốn.',aside:'Chúc mì 20/10 vui hết nấc, ăn ngon và nhận nhiều quà nhé! ✨'}
 ];
 const total=scenes.reduce((sum,s)=>sum+s.duration,0);
 function sceneAt(time){let start=0;for(let i=0;i<scenes.length;i++){if(time<start+scenes[i].duration)return{index:i,local:time-start};start+=scenes[i].duration}return{index:0,local:0}}
@@ -52,10 +67,10 @@ async function toggle(){
  const player=audio.current;
  if(!player.paused){player.pause();return}
  setError('');setPending(true);
- try{await player.play()}catch{setError('Chưa phát được nhạc. Cậu thử lại nhé.')}finally{setPending(false)}
+ try{await player.play()}catch{setError('Chưa phát được nhạc. mì thử lại nhé.')}finally{setPending(false)}
 }
 return <div className="music-control">
- <audio ref={audio} src={`${import.meta.env.BASE_URL}nhac-nen.mp3`} preload="none" loop onPlaying={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setPlaying(false);setError('Không tải được nhạc. Cậu thử tải lại trang nhé.')}}/>
+ <audio ref={audio} src={`${import.meta.env.BASE_URL}nhac-nen.mp3`} preload="none" loop onPlaying={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setPlaying(false);setError('Không tải được nhạc. mì thử tải lại trang nhé.')}}/>
  <button type="button" className={'music-button'+(playing?' is-playing':'')} onClick={toggle} disabled={pending} aria-label={playing?'Tắt nhạc nền':'Bật nhạc nền'} aria-pressed={playing} aria-describedby={error?'music-error':undefined}>
  <span className="music-equalizer" aria-hidden="true"><i/><i/><i/><i/></span>
  <span>{pending?'Đang tải…':playing?'Tắt nhạc':'Bật nhạc'}</span>
@@ -71,12 +86,12 @@ useEffect(()=>{let raf,last=0,elapsed=0,lastRender=0;function tick(now){if(last&
 useEffect(()=>{const key=e=>{if(e.key==='Escape')setPaused(p=>!p)};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[]);
 const{index,local}=sceneAt(clock),scene=scenes[index];
 return <main className={'film theme-'+scene.theme+(paused||hidden?' paused':'')} aria-label="Thiệp chúc mừng ngày 20 tháng 10 tự động"><div className="aurora aurora-one"/><div className="aurora aurora-two"/><NightSky theme={scene.theme} paused={paused}/><div className="vignette"/>
-<div className="film-brand">gửi Thư<span>✦</span></div><div className="date-mark">20 <span>·</span> 10</div>
+<div className="film-brand">gửi Hoa<span>✦</span></div><div className="date-mark">20 <span>·</span> 10</div>
 <MusicButton/>
 <section key={index} className={'scene scene-'+scene.theme} style={{'--duration':scene.duration+'ms'}} aria-live="polite"><Scenery theme={scene.theme}/>
 <div className="message"><p className="eyebrow">{scene.tag}</p><h1>{scene.title}</h1><p className="note">{scene.note}</p></div>
-<div className={'face face-'+scene.theme} aria-hidden="true"><div className="eye-wrap"><div className="eye"/><span className="blush">///</span></div><div className="eye-wrap"><div className="eye"/><span className="blush">///</span></div><span className="mouth"/></div>
+{scene.theme==='memories'?<PhotoGallery/>:<div className={'face face-'+scene.theme} aria-hidden="true"><div className="eye-wrap"><div className="eye"/><span className="blush">///</span></div><div className="eye-wrap"><div className="eye"/><span className="blush">///</span></div><span className="mouth"/></div>}
 <p className="aside">{scene.aside}</p>{scene.theme==='finale'&&<div className="final-date">20<span>✦</span>10</div>}</section>
-<div className="film-footer"><span>CHÚC CẬU MỘT NGÀY 20/10 THẬT VUI</span><div className="timeline" aria-hidden="true">{scenes.map((s,i)=><span key={s.theme}><i style={{transform:'scaleX('+(i<index?1:i===index?local/s.duration:0)+')'}}/></span>)}</div><span>LUÔN VUI VẺ NHÉ ✦</span></div></main>}
+<div className="film-footer"><span>CHÚC HOA MỘT NGÀY 20/10 THẬT VUI</span><div className="timeline" aria-hidden="true">{scenes.map((s,i)=><span key={s.theme}><i style={{transform:'scaleX('+(i<index?1:i===index?local/s.duration:0)+')'}}/></span>)}</div><span>LUÔN VUI VẺ NHÉ ✦</span></div></main>}
 createRoot(document.getElementById('root')).render(<App/>);
 

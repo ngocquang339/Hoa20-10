@@ -1,6 +1,6 @@
-# Gửi cậu — 20.10
+# Gửi Hoa — 20.10
 
-Thiệp hoạt hình chúc 20/10 bằng React + Vite, thuần frontend, không cần backend. Tám cảnh tự chạy ngay khi mở, tổng thời lượng 92 giây, rồi tự lặp lại. Không cần nhấn nút hoặc cuộn trang.
+Thiệp hoạt hình chúc 20/10 bằng React + Vite, thuần frontend, không cần backend. Chín cảnh tự chạy ngay khi mở, tổng thời lượng 114 giây, rồi tự lặp lại. Không cần nhấn nút hoặc cuộn trang.
 
 ## Chạy tại máy
 
@@ -27,3 +27,5 @@ Upload thư mục `dist` lên hosting tĩnh. `npm run preview` để xem bản b
 - Chế độ giảm chuyển động giảm các chuyển động nền lớn, vẫn giữ mắt chớp và hạt bay theo yêu cầu. Font Google có font hệ thống dự phòng.
 
 Các minh họa được vẽ bằng SVG/CSS, lấy cảm hứng từ ảnh tham khảo, không sử dụng ảnh chụp màn hình làm nền.
+
+- Cảnh ảnh xuất hiện sau 4 cảnh đầu (giây 39–61). Bốn ảnh nằm trong public/photos; sửa mảng memories trong src.jsx để đổi lời chúc. Máy tính hiển thị một hàng 4 ảnh; điện thoại vuốt ngang để xem từng ảnh.
