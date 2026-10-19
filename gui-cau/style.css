@@ -22,13 +22,28 @@
 @keyframes photo-reveal{from{transform:translateY(100svh) rotate(-4deg)}to{transform:translateY(0) rotate(0)}}
 @keyframes photo-shine{0%,15%{background-position:150% 0;opacity:0}25%{opacity:.5}50%,100%{background-position:-50% 0;opacity:0}}
 @keyframes photo-twinkle{0%,100%{opacity:.35;transform:scale(.75) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(15deg)}}
-@media(max-width:700px){.scene-memories .message{top:14%;left:7%;right:7%}.scene-memories h1{font-size:28px}.scene-memories .note{font-size:11px}.photo-gallery{top:34%;bottom:16%;left:0;right:0;max-width:none;overflow:visible;animation:enable-photo-scroll 0s 7s forwards;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#d69aba #ffffff0a;padding:12px 7%;gap:16px}.photo-card{flex:0 0 76%;scroll-snap-align:center}.photo-card h2{font-size:21px}.photo-card p{font-size:12px}.scene-memories .aside{bottom:6%;left:8%;right:8%;font-size:14px}}
+@media(max-width:700px){
+ .film.theme-memories{min-height:740px}
+ .scene-memories{display:flex;flex-direction:column;gap:14px;padding:80px 5% 45px}
+ .scene-memories .message{position:static;flex:none}
+ .scene-memories .eyebrow{font-size:7px;margin-bottom:8px}
+ .scene-memories h1{font-size:clamp(23px,6vw,28px);line-height:1.3}
+ .scene-memories .note{font-size:11px;line-height:1.6;margin-top:8px}
+ .photo-gallery{position:relative;inset:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));flex:1;min-height:0;width:100%;max-width:none;margin:0;padding:0;gap:12px;overflow:visible}
+ .photo-card{min-height:0;padding:6px 6px 9px;border-radius:12px}
+ .photo-frame{min-height:65px}
+ .photo-card figcaption{padding:7px 2px 0}
+ .photo-card h2{font-size:clamp(14px,3.8vw,18px);line-height:1.25}
+ .photo-card p{font-size:10px;line-height:1.5;margin-top:5px}
+ .scene-memories .aside{position:static;flex:none;font-size:12px;line-height:1.5;margin:0}
+ .photo-spark{font-size:18px}
+}
 @media(max-height:600px) and (min-width:701px){.scene-memories .message{top:13%}.scene-memories h1{font-size:27px}.scene-memories .note{display:none}.photo-gallery{top:30%;bottom:14%;padding-top:5px;padding-bottom:5px}.photo-card{padding:5px 5px 8px}.photo-card figcaption{padding:5px 2px 0}.photo-card h2{font-size:16px}.photo-card p{font-size:10px;line-height:1.5;margin-top:3px}.scene-memories .aside{bottom:6%;font-size:12px}}
 /* Keep the explicitly requested photo flight even with reduced background motion. */
 @media(prefers-reduced-motion:reduce){.photo-frame::after,.photo-spark{animation:none}.photo-frame::after{display:none}}
 
-/* Let cards fly through the bottom of the screen before enabling mobile scrolling. */
-@keyframes enable-photo-scroll{to{overflow-x:auto;overflow-y:hidden}}
+
+
 
 /* Use the same italic type style across each scene heading. */
 .scene .message h1{font-style:italic;color:var(--accent);text-shadow:0 0 32px color-mix(in srgb,var(--accent),transparent 65%)}

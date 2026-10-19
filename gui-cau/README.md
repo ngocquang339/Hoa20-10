@@ -28,4 +28,4 @@ Upload thư mục `dist` lên hosting tĩnh. `npm run preview` để xem bản b
 
 Các minh họa được vẽ bằng SVG/CSS, lấy cảm hứng từ ảnh tham khảo, không sử dụng ảnh chụp màn hình làm nền.
 
-- Cảnh ảnh xuất hiện sau 4 cảnh đầu (giây 39–61). Bốn ảnh nằm trong public/photos; sửa mảng memories trong src.jsx để đổi lời chúc. Máy tính hiển thị một hàng 4 ảnh; điện thoại vuốt ngang để xem từng ảnh.
+- Cảnh ảnh xuất hiện sau 4 cảnh đầu (giây 39–61). Bốn ảnh nằm trong public/photos; sửa mảng memories trong src.jsx để đổi lời chúc. Máy tính hiển thị một hàng 4 ảnh; điện thoại hiển thị lưới 2 hàng × 2 ảnh, không cần vuốt ngang. Màn hình thấp có thể cuộn dọc để đọc hết nội dung.
