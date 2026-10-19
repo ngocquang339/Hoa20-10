@@ -70,7 +70,7 @@ async function toggle(){
  try{await player.play()}catch{setError('Chưa phát được nhạc. mì thử lại nhé.')}finally{setPending(false)}
 }
 return <div className="music-control">
- <audio ref={audio} src={`${import.meta.env.BASE_URL}nhac-nen.mp3`} preload="none" loop onPlaying={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setPlaying(false);setError('Không tải được nhạc. mì thử tải lại trang nhé.')}}/>
+ <audio ref={audio} src={`${import.meta.env.BASE_URL}nhac-nen.mp3?v=80b7abc33128`} preload="none" loop onPlaying={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setPlaying(false);setError('Không tải được nhạc. mì thử tải lại trang nhé.')}}/>
  <button type="button" className={'music-button'+(playing?' is-playing':'')} onClick={toggle} disabled={pending} aria-label={playing?'Tắt nhạc nền':'Bật nhạc nền'} aria-pressed={playing} aria-describedby={error?'music-error':undefined}>
  <span className="music-equalizer" aria-hidden="true"><i/><i/><i/><i/></span>
  <span>{pending?'Đang tải…':playing?'Tắt nhạc':'Bật nhạc'}</span>
